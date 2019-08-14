@@ -1,0 +1,43 @@
+macro "merge channels mime fluorescence"{
+
+file='0'
+//feed in root address    
+file= "E:\\day 20 col-pcl-c1c2c3\\c30\\";
+k="c30 20 ";
+m=20;
+//i=k;
+i="c30 x20 ";
+j=0;
+for (j=1; j<6; j++) {
+
+
+file1=file+i+j+"\\Pos0\\";
+
+//print(file1)
+
+//open image files
+list1= getFileList(file1);
+    //print (file1);
+    //print(file1+list1[0]);    
+open(file1+list1[0]);
+//open("E:/Day 10 -OPN/c1-/c1-1x10/Pos0/img_000000000_Default0_000.tif");
+open(file1+list1[1]);
+open(file1+list1[2]);
+//print(file1)
+
+//merge channels
+run("Merge Channels...", "c1=" + list1[1] + " c2=" + list1[0] + " c3=" + list1[2] + " keep");
+close(list1[0]);
+close(list1[1]);
+close(list1[2]);
+
+
+
+title="composite"+k+j+".tiff";
+saveaddress="E:\\test\\"+"x"+m+"\\"+title;
+//print(saveaddress)
+saveAs("Tiff", saveaddress); 
+//print("title: " + title); 
+close();
+}
+}
