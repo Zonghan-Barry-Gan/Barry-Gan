@@ -1,0 +1,28 @@
+macro "save as jpg"{
+
+file='0'
+//feed in root address    
+file= "E:\\test\\20d\\sclbar\\x10\\";
+m=10
+list1= getFileList(file);
+
+for (j=0; j<list1.length; j++) {
+
+
+    
+open(file+list1[j]);
+
+
+
+
+
+
+
+name=getTitle;
+saveaddress="E:\\test\\20d\\jpg\\x10\\"+name;
+print(saveaddress);
+saveAs("jpg", saveaddress); 
+close(list1[j]);
+
+}
+}
